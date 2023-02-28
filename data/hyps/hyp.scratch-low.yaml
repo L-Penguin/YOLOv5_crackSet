@@ -1,0 +1,55 @@
+# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
+# Hyperparameters for low-augmentation COCO training from scratch
+# python train.py --batch 64 --cfg yolov5n6.yaml --weights '' --data coco.yaml --img 640 --epochs 300 --linear
+# See tutorials for hyperparameter evolution https://github.com/ultralytics/yolov5#tutorials
+
+# 初始学习速率
+lr0: 0.01  # initial learning rate (SGD=1E-2, Adam=1E-3)
+# 最终OneCycleLR学习率
+lrf: 0.01  # final OneCycleLR learning rate (lr0 * lrf)
+momentum: 0.937  # SGD momentum/Adam beta1
+# 权重衰变
+weight_decay: 0.0005  # optimizer weight decay 5e-4
+# 学习率热身epoch
+warmup_epochs: 3.0  # warmup epochs (fractions ok)
+# 学习率热身初始动量
+warmup_momentum: 0.8  # warmup initial momentum
+# 学习率热身偏执学习率
+warmup_bias_lr: 0.1  # warmup initial bias lr
+# 损失函数各项权重: box、cls、cls_pw、obj
+box: 0.05  # box loss gain
+cls: 0.5  # cls loss gain
+cls_pw: 1.0  # cls BCELoss positive_weight
+obj: 1.0  # obj loss gain (scale with pixels)
+obj_pw: 1.0  # obj BCELoss positive_weight
+# 训练时IOU阈值
+iou_t: 0.20  # IoU training threshold
+# anchors容纳的阈值，尺寸的1/anchor_t - anchor_t倍数
+anchor_t: 4.0  # anchor-multiple threshold
+# anchors: 3  # anchors per output layer (0 to ignore)
+# 大于0开启FocalLoss
+fl_gamma: 0.0  # focal loss gamma (efficientDet default gamma=1.5)
+#颜色亮度,色调(Hue)、饱和度(Saturation)
+hsv_h: 0.015  # image HSV-Hue augmentation (fraction)
+hsv_s: 0.7  # image HSV-Saturation augmentation (fraction)
+hsv_v: 0.4  # image HSV-Value augmentation (fraction)
+# random_perspective旋转和缩放矩阵参数 (-degrees, +degrees)
+degrees: 180.0  # image rotation (+/- deg)
+# random_perspective中平移矩阵参数
+translate: 0.1  # image translation (+/- fraction)
+# random_perspective缩放矩阵参数  (1-scale, 1+scale)
+scale: 0.5  # image scale (+/- gain)
+# random_perspective剪切矩阵参数
+shear: 0.0  # image shear (+/- deg)
+# random_perspective透视变化参数
+perspective: 0.0  # image perspective (+/- fraction), range 0-0.001
+# 图像进行上下翻转概率
+flipud: 0.0  # image flip up-down (probability)
+# 图像进行左右翻转概率
+fliplr: 0.5  # image flip left-right (probability)
+# 图像进行mosaic增强的概率
+mosaic: 1.0  # image mosaic (probability)
+# mosaic中图像透明叠加概率
+mixup: 0.0  # image mixup (probability)
+# mosaic中启用
+copy_paste: 0.0  # segment copy-paste (probability)
